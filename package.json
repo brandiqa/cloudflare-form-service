@@ -16,10 +16,6 @@
     "type": "git",
     "url": "https://github.com/brandiqa/cloudflare-form-service"
   },
-  "bugs": {
-    "url": "https://github.com/brandiqa/cloudflare-form-service/issues",
-    "email": "micwanyoike@gmail.com"
-  },
   "devDependencies": {
     "prettier": "^1.18.2"
   }
