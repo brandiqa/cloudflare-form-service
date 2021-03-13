@@ -1,11 +1,26 @@
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(event.request))
+  const request = event.request
+  if (request.method === 'POST') {
+    event.respondWith(handlePost(request))
+  } else {
+    event.respondWith(handleRequest(request))
+  }
 })
 /**
  * Respond with hello worker text
  * @param {Request} request
  */
 async function handleRequest(request) {
+  return new Response('Hello worker!', {
+    headers: { 'content-type': 'text/plain' },
+  })
+}
+
+/**
+ * Handle JSON POST request
+ * @param {Request} request
+ */
+async function handlePost(request) {
   const json = await request.json()
   const { firstName } = json
   const data = {
