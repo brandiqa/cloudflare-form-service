@@ -1,3 +1,4 @@
+import template from './template'
 import validate from './validator'
 
 addEventListener('fetch', event => {
@@ -13,8 +14,8 @@ addEventListener('fetch', event => {
  * @param {Request} request
  */
 async function handleRequest(request) {
-  return new Response('Hello worker!', {
-    headers: { 'content-type': 'text/plain' },
+  return new Response(template(), {
+    headers: { 'content-type': 'text/html' },
   })
 }
 
