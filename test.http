@@ -13,14 +13,14 @@ Content-Type: application/json
 
 ###
 
-# Test POST request with all properties but with one invalid type
+# Test POST request with all properties but with invalid types
 POST http://localhost:8787/ HTTP/1.1
 Content-Type: application/json
 
 {
   "firstName": "John",
   "lastName": "Doe",
-  "email": "john.doe@gmail.com",
+  "email": "john.doe",
   "message": "Such a great show. Keep it up!",
   "subscribe": "true"
 }

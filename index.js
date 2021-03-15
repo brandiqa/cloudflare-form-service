@@ -24,9 +24,18 @@ async function handleRequest(request) {
  */
 async function handlePost(request) {
   const json = await request.json()
-  const { valid, errors } = validate(json)
-  console.log('valid:', valid)
-  console.log('errors:', errors.toString())
+
+  // Validate json inputs
+  const results = validate(json)
+
+  // Return 400 Error Response for invalid inputs
+  if (!results.valid) {
+    return new Response(JSON.stringify(results), {
+      headers: { 'content-type': 'text/json' },
+      status: 400,
+    })
+  }
+
   const { firstName } = json
   const data = {
     message: `Hello ${firstName}!`,

@@ -7,7 +7,7 @@ const validator = new Validator(
     properties: {
       firstName: { type: 'string' },
       lastName: { type: 'string' },
-      email: { type: 'string' },
+      email: { type: 'string', format: 'email' },
       message: { type: 'string' },
       subscribe: { type: 'boolean' },
     },
@@ -27,6 +27,7 @@ function validate(input) {
 
   return {
     valid,
+    message: 'Validation failed!',
     errors: errs,
   }
 }
