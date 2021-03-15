@@ -2,6 +2,11 @@
 # yarn lockfile v1
 
 
+"@cfworker/json-schema@^1.6.8":
+  version "1.6.8"
+  resolved "https://registry.yarnpkg.com/@cfworker/json-schema/-/json-schema-1.6.8.tgz#d9fca8ac86a90c7598878013fbb67bb39d5d01f5"
+  integrity sha512-00htQX1hkUA452WkmAvfYy2u0EIBIHQlmBSlaYrVSbpDn+Z3p8ln7tCNkkuYV7BJepee8V26jo/HqsG21p24TA==
+
 prettier@^1.18.2:
   version "1.19.1"
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.19.1.tgz#f7d7f5ff8a9cd872a7be4ca142095956a60797cb"

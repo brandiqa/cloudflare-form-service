@@ -1,5 +1,5 @@
 name = "cloudflare-form-service"
-type = "javascript"
+type = "webpack"
 account_id = "4504f7728d644293d728b7168b5cf13d"
 workers_dev = true
 route = ""

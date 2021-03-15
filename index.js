@@ -1,3 +1,5 @@
+import validate from './validator'
+
 addEventListener('fetch', event => {
   const request = event.request
   if (request.method === 'POST') {
@@ -22,6 +24,9 @@ async function handleRequest(request) {
  */
 async function handlePost(request) {
   const json = await request.json()
+  const { valid, errors } = validate(json)
+  console.log('valid:', valid)
+  console.log('errors:', errors.toString())
   const { firstName } = json
   const data = {
     message: `Hello ${firstName}!`,

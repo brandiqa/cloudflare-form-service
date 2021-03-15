@@ -4,6 +4,7 @@
   "version": "1.0.0",
   "description": "A form handling service built using Cloudflare Workers for jamstack websites and apps",
   "main": "index.js",
+  "type": "module",
   "scripts": {
     "dev": "wrangler dev",
     "preview": "wrangler preview",
@@ -18,5 +19,8 @@
   },
   "devDependencies": {
     "prettier": "^1.18.2"
+  },
+  "dependencies": {
+    "@cfworker/json-schema": "^1.6.8"
   }
 }
