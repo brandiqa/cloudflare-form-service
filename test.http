@@ -3,7 +3,7 @@ GET http://localhost:8787/ HTTP/1.1
 
 ###
 
-# Test POST request with missing properties
+# Test invalid POST request - check missing data inputs
 POST http://localhost:8787/ HTTP/1.1
 Content-Type: application/json
 
@@ -13,7 +13,7 @@ Content-Type: application/json
 
 ###
 
-# Test POST request with all properties but with invalid types
+# Test invalid POST request - check invalid types
 POST http://localhost:8787/ HTTP/1.1
 Content-Type: application/json
 
@@ -22,12 +22,12 @@ Content-Type: application/json
   "lastName": "Doe",
   "email": "john.doe",
   "message": "Such a great show. Keep it up!",
-  "subscribe": "true"
+  "subscribe": "false"
 }
 
 ###
 
-# Test POST request with all properties, all valid types
+# Test valid POST request
 POST http://localhost:8787/ HTTP/1.1
 Content-Type: application/json
 
@@ -41,7 +41,18 @@ Content-Type: application/json
 
 ###
 
-# Test POST request on published URL
+#-----------------------#
+#                       |
+# CLOUD HTTP TESTS      |
+#                       |
+#-----------------------#
+
+# Test GET request
+GET cloudflare-form-service.brandiqa.workers.dev/ HTTP/1.1
+
+###
+
+# Test valid POST request on published URL
 POST cloudflare-form-service.brandiqa.workers.dev/ HTTP/1.1
 
 {
