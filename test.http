@@ -48,7 +48,7 @@ Content-Type: application/json
 
 #-----------------------#
 #                       |
-# PUBLISHED HTTP TESTS      |
+# PUBLISHED HTTP TESTS  |
 #                       |
 #-----------------------#
 
@@ -69,6 +69,41 @@ Content-Type: application/json
 
 # Test valid POST request on published URL
 POST cloudflare-form-service.brandiqa.workers.dev/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Doe",
+  "email": "john.doe@gmail.com",
+  "message": "Such a great show. Keep it up!",
+  "subscribe": false
+}
+
+###
+
+#-----------------------#
+#                       |
+# PRODUCTION HTTP TESTS |
+#                       |
+#-----------------------#
+
+# Test GET request
+GET contact-form-worker.wallesdevelopers.com/ HTTP/1.1
+
+###
+
+# Test invalid POST request - check missing data inputs
+POST contact-form-worker.wallesdevelopers.com/ HTTP/1.1
+Content-Type: application/json
+
+{
+  "firstName": "John"
+}
+
+###
+
+# Test valid POST request on published URL
+POST contact-form-worker.wallesdevelopers.com/ HTTP/1.1
 Content-Type: application/json
 
 {

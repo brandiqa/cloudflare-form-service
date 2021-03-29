@@ -1,6 +1,13 @@
-name = "cloudflare-form-service"
+name = "cloudflare-form-service-dev"
 type = "webpack"
 account_id = "4504f7728d644293d728b7168b5cf13d"
+
+[env.staging]
+name = "cloudflare-form-service-staging"
 workers_dev = true
-route = ""
-zone_id = ""
+
+[env.production]
+name = "cloudflare-form-service"
+workers_dev = false
+route = "https://contact-form-worker.wallesdevelopers.com/"
+zone_id = "3ffba4ca78ceb13bfa71fa67cbb9e059"
