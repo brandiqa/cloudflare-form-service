@@ -3,6 +3,11 @@ GET http://localhost:8787/ HTTP/1.1
 
 ###
 
+# Test invalid POST with no content type
+POST http://localhost:8787/ HTTP/1.1
+
+###
+
 # Test invalid POST request - check missing data inputs
 POST http://localhost:8787/ HTTP/1.1
 Content-Type: application/json

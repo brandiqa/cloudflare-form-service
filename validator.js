@@ -12,8 +12,8 @@ const validator = new Validator(
       subscribe: { type: 'boolean' },
     },
   },
-  '2019-09',
-  false,
+  '2019-09', // draft version
+  false, // stop processing after the first error
 )
 
 function validate(input) {
@@ -26,9 +26,8 @@ function validate(input) {
   }))
 
   return {
-    valid,
-    message: 'Validation failed!',
-    errors: errs,
+    valid, // boolean for validation status
+    errors: errs, // list of validation errors
   }
 }
 
