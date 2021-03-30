@@ -1,24 +1,28 @@
 import validate from './validator'
 import sendMail from './email-service'
 
+const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'Content-Type',
+  'Access-Control-Allow-Methods': 'POST',
+  'Access-Control-Max-Age': '86400',
+}
+
 addEventListener('fetch', event => {
-  const { request } = event
-  if (request.method === 'POST') {
-    event.respondWith(handlePostRequest(request))
-  } else {
-    event.respondWith(handleRequest(request))
-  }
+  event.respondWith(handleRequest(request))
 })
 
-/**
- * Respond with 404 error message
- * @param {Request} request
- */
 async function handleRequest(request) {
-  return new Response('Object Not Found', {
-    statusText: 'Object Not Found',
-    status: 404,
-  })
+  if (request.method === 'POST') {
+    return handlePostRequest(request)
+  } else if (request.method === 'OPTIONS') {
+    return new Response('OK', { headers: corsHeaders })
+  } else {
+    return new Response('Object Not Found', {
+      statusText: 'Object Not Found',
+      status: 404,
+    })
+  }
 }
 
 /**
@@ -57,7 +61,7 @@ async function handlePostRequest(request) {
     json = await readRequestBody(request)
   } catch (error) {
     return new Response(error, {
-      headers: { 'content-type': 'text/plain' },
+      headers: { 'content-type': 'text/plain', ...corsHeaders },
       statusText: error,
       status: 500,
     })
@@ -68,7 +72,7 @@ async function handlePostRequest(request) {
   // Return 400 Error Response for invalid post request
   if (!results.valid) {
     return new Response(JSON.stringify(results), {
-      headers: { 'content-type': 'text/json' },
+      headers: { 'content-type': 'text/json', ...corsHeaders },
       status: 400,
     })
   }
@@ -79,7 +83,7 @@ async function handlePostRequest(request) {
       return new Response(
         JSON.stringify({ message: 'Message succesfully sent' }),
         {
-          headers: { 'content-type': 'text/json' },
+          headers: { 'content-type': 'text/json', ...corsHeaders },
         },
       )
     } else {

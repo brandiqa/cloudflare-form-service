@@ -7,7 +7,6 @@
   "scripts": {
     "dev": "wrangler dev",
     "preview": "wrangler preview",
-    "publish": "wrangler publish",
     "format": "prettier --write \"**/*.{js,css,json,md}\""
   },
   "author": "Michael Wanyoike <micwanyoike@gmail.com>",
