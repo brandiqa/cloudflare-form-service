@@ -9,7 +9,7 @@ const corsHeaders = {
 }
 
 addEventListener('fetch', event => {
-  event.respondWith(handleRequest(request))
+  event.respondWith(handleRequest(event.request))
 })
 
 async function handleRequest(request) {
@@ -90,14 +90,14 @@ async function handlePostRequest(request) {
       return new Response(
         JSON.stringify({ message: 'Message submission failed!', result }),
         {
-          headers: { 'content-type': 'text/json' },
+          headers: { 'content-type': 'text/json', ...corsHeaders },
           status: 400,
         },
       )
     }
   } catch (error) {
     return new Response(error, {
-      headers: { 'content-type': 'text/plain' },
+      headers: { 'content-type': 'text/plain', ...corsHeaders },
       statusText: 'An error occurred',
       status: 500,
     })
